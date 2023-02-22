@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<student id="12345678930">
+    <firstName>firstnamethree</firstName>
+    <lastName>lastnamethree</lastName>
+    <phoneNumber>595030201</phoneNumber>
+    <active>false</active>
+    <gender>MALE</gender>
+    <level>1</level>
+    <birthDate>1999-02-02</birthDate>
+</student>

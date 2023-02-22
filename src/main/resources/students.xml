@@ -1,0 +1,21 @@
+<!DOCTYPE students>
+<students>
+	<student id="12345678910">
+		<firstName>firstnameone</firstName>
+		<lastName>lastnameone</lastName>
+		<phoneNumber>599001122</phoneNumber>
+		<active>true</active>
+		<gender>male</gender>
+		<level>3</level>
+		<birthDate>1999-01-01</birthDate>
+	</student>
+	<student id="12345678910">
+		<firstName>firstnametwo</firstName>
+		<lastName>lastnametwo</lastName>
+		<phoneNumber>599112233</phoneNumber>
+		<active>false</active>
+		<gender>female</gender>
+		<level>4</level>
+		<birthDate>1998-02-02</birthDate>
+	</student>
+</students>

@@ -1,0 +1,22 @@
+[
+	{
+		"id": "12345778901",
+		"firstName": "Chuck",
+		"lastName": "Norris",
+		"phoneNumber": "599999900",
+		"active": true,
+		"gender": "male",
+		"level": "2",
+		"birthDate": "2000-12-12"
+	},
+	{
+		"id": "12345778901",
+		"firstName": "Michael",
+		"lastName": "Scott",
+		"phoneNumber": "599110001",
+		"active": false,
+		"gender": "male",
+		"level": "4",
+		"birthDate": "1998-11-11"
+	}
+]
