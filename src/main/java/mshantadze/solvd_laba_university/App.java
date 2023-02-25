@@ -26,44 +26,18 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import mshantadze.solvd_laba_university.dao.students.StudentsMyBatis;
-import mshantadze.solvd_laba_university.parsers.JAXB;
-import mshantadze.solvd_laba_university.parsers.Jackson;
-import mshantadze.solvd_laba_university.parsers.StudentsDOMParser;
-import mshantadze.solvd_laba_university.parsers.StudentsStaXParser;
-import mshantadze.solvd_laba_university.parsers.StudentsXMLHandler;
-import mshantadze.solvd_laba_university.dao.students.Student;
+import mshantadze.solvd_laba_university.dao.mybatis.implementation.StudentsMyBatis;
+import mshantadze.solvd_laba_university.models.Student;
+import mshantadze.solvd_laba_university.parsers.json.Jackson;
+import mshantadze.solvd_laba_university.parsers.xml.default_parsers.students.StudentsDOMParser;
+import mshantadze.solvd_laba_university.parsers.xml.default_parsers.students.StudentsStaXParser;
+import mshantadze.solvd_laba_university.parsers.xml.default_parsers.students.StudentsXMLHandler;
+import mshantadze.solvd_laba_university.parsers.xml.jaxb.JAXB;
 
 public class App 
 {
-    public static void main(String[] args ) throws ParserConfigurationException, SAXException, IOException {
-    	/*
-    	SAXParserFactory factory = SAXParserFactory.newInstance();
-    	SAXParser parser = factory.newSAXParser();
-    	parser.parse(new File("src/main/resources/students.xml"), studentsXmlHandler);
-    	List<Student> students = studentsXmlHandler.readStudents();
-    	
-    	for (Student student : students) {
-    		System.out.println(student.getFirstName());
-    	}
-    	StudentsStaXParser studentsReader = new StudentsStaXParser();
-    	List<Student> students = studentsReader.readStudents();
-    	
-    	for (Student student : students) {
-    		System.out.println(student.getFirstName());
-    	}
-    	
-    	
-    	StudentsDOMParser studentsDOMParser = new StudentsDOMParser();
-    	studentsDOMParser.readStudents();
-    	
-    	JAXB jaxb = new JAXB();
-    	
-    	jaxb.read();
-    	jaxb.write();
-    	*/
-    	
-    	StudentsMyBatis iStudentsMyBatis = new StudentsMyBatis();
-    	iStudentsMyBatis.getStudents();
+    public static void main(String[] args ) {
+    	StudentsMyBatis studentsMyBatis = new StudentsMyBatis();
+    	studentsMyBatis.getStudents();
     }
 }

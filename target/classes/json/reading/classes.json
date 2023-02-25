@@ -1,0 +1,16 @@
+[
+	{
+		"id": 1,
+		"name": "classone",
+		"description": "this is a class description",
+		"level": 3,
+		"departmentId": 1
+	},
+	{
+		"id": 1,
+		"name": "classone",
+		"description": "this is a class description",
+		"level": 3,
+		"departmentId": 1
+	}
+]

@@ -1,0 +1,24 @@
+<!DOCTYPE lecturers>
+
+<lecturers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamepaceSchemaLocation="src/main/resources/xml/xsd/lecturers.xsd">
+	<lecturer id="10001005510">
+		<firstName>Lecturereone</firstName>
+		<lastName>Lastnameeone</lastName>
+		<phoneNumber>755001100</phoneNumber>
+		<active>true</active>
+		<gender>female</gender>
+		<departmentId>1</departmentId>
+		<classId>1</classId>
+		<birthDate>1995-02-01</birthDate>
+	</lecturer>
+	<lecturer id="10001005111">
+		<firstName>Lecturertwo</firstName>
+		<lastName>Lastnameetwo</lastName>
+		<phoneNumber>999101100</phoneNumber>
+		<active>false</active>
+		<gender>male</gender>
+		<departmentId>2</departmentId>
+		<classId>3</classId>
+		<birthDate>1980-11-11</birthDate>
+	</lecturer>
+</lecturers>

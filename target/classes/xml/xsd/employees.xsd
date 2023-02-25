@@ -1,0 +1,21 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="employees">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="employee" maxOccurs="unbounded" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="firstName"/>
+              <xs:element type="xs:string" name="lastName"/>
+              <xs:element type="xs:string" name="role"/>
+              <xs:element type="xs:int" name="phoneNumber"/>
+              <xs:element type="xs:string" name="gender"/>
+              <xs:element type="xs:int" name="departmentId"/>
+            </xs:sequence>
+            <xs:attribute type="xs:long" name="id"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

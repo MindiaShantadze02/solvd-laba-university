@@ -4,8 +4,12 @@
 <configuration>
 	<properties resource="mysql.properties" />
 	<typeAliases>
-		<typeAlias type="mshantadze.solvd_laba_university.dao.students.Student" alias="Student" />
-	</typeAliases>
+			<typeAlias type="mshantadze.solvd_laba_university.models.Student" alias="Student" />
+			<typeAlias type="mshantadze.solvd_laba_university.models.Lecturer" alias="Lecturer" />
+			<typeAlias type="mshantadze.solvd_laba_university.models.Event" alias="Event" />
+			<typeAlias type="mshantadze.solvd_laba_university.models.UniClass" alias="UniClass" />
+			<typeAlias type="mshantadze.solvd_laba_university.models.Employee" alias="Employee" />
+		</typeAliases>
 	<environments default="development">
 		<environment id="development">
 			<transactionManager type="JDBC">
@@ -21,5 +25,8 @@
 	</environments>
 	<mappers>
 		<mapper resource="mappers/student-mapper.xml" />
+		<mapper resource="mappers/lecturer-mapper.xml" />
+		<mapper resource="mappers/class-mapper.xml" />
+		<mapper resource="mappers/employee-mapper.xml" />
 	</mappers>
 </configuration>

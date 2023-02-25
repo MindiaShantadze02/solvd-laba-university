@@ -1,0 +1,19 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="classes">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="class" maxOccurs="unbounded" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="name"/>
+              <xs:element type="xs:string" name="description"/>
+              <xs:element type="xs:int" name="level"/>
+              <xs:element type="xs:int" name="departmentId"/>
+            </xs:sequence>
+            <xs:attribute type="xs:int" name="id"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,20 @@
+<!DOCTYPE employees>
+
+<employees xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamepaceSchemaLocation="src/main/resources/xml/xsd/employees.xsd">
+	<employee id="10001005510">
+		<firstName>Employeeone</firstName>
+		<lastName>Lastnameeone</lastName>
+		<role>financist</role>
+		<phoneNumber>755001100</phoneNumber>
+		<gender>female</gender>
+		<departmentId>1</departmentId>
+	</employee>
+	<employee id="10001005511">
+		<firstName>Employeetwo</firstName>
+		<lastName>Lastnameetwo</lastName>
+		<role>administator</role>
+		<phoneNumber>755001111</phoneNumber>
+		<gender>male</gender>
+		<departmentId>3</departmentId>
+	</employee>
+</employees>

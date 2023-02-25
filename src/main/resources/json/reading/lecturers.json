@@ -1,0 +1,24 @@
+[
+	{
+		"id": "11112233555",
+		"firstName": "Lecturerone",
+		"lastName": "Lastnameone",
+		"phoneNumber": "577001100",
+		"active": true,
+		"gender": "MALE",
+		"departmentId": 1,
+		"classId": 1,
+		"birthDate": "1997-01-02"
+	},
+	{
+		"id": "11112233555",
+		"firstName": "Lecturertwo",
+		"lastName": "Lastnametwo",
+		"phoneNumber": "577001111",
+		"active": false,
+		"gender": "MALE",
+		"departmentId": 3,
+		"classId": 2,
+		"birthDate": "1995-11-01"
+	}
+]

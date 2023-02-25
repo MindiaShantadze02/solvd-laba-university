@@ -1,0 +1,20 @@
+[
+	{
+		"id": "11112333555",
+		"firstName": "Employeeone",
+		"lastName": "Lastnameeone",
+		"role": "financist",
+		"phoneNumber": "577001100",
+		"gender": "FEMALE",
+		"departmentId": 1
+	},
+	{
+		"id": "11112333333",
+		"firstName": "Employeetwo",
+		"lastName": "Lastnameetwo",
+		"role": "administrator",
+		"phoneNumber": "577001200",
+		"gender": "MALE",
+		"departmentId": 3
+	}
+]

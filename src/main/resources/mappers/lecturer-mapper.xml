@@ -1,19 +1,17 @@
 <!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN'
         'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
-<mapper namespace="mshantadze.solvd_laba_university.dao.interfaces.IStudentsDAO">
-	<select id="getStudents" resultMap="studentResultMap">
-		SELECT * FROM Students
+<mapper namespace="mshantadze.solvd_laba_university.dao.interfaces.ILecturersDAO">
+	<select id="getLecturers" resultMap="lecturerResultMap">
+		SELECT * FROM Lecturer
 	</select>
 
-	<resultMap type = "Student" id="studentResultMap">
-		<id property="studentId" column="student_id" />
+	<resultMap type = "Lecturer" id="lecturerResultMap">
+		<id property="lecturerId" column="lecturer_id" />
 		<result property="firstName" column="first_name" />
 		<result property="lastName" column="last_name" />
 		<result property="phoneNumber" column="phone_number" />
-		<result property="active" column="active" />
-		<result property="photo" column="photo" />
+		<result property="classId" column="class_id" />
 		<result property="gender" column="gender" />
-		<result property="level" column="level" />
 		<result property="birthDate" column="birth_date" />
 	</resultMap>
 </mapper>

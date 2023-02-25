@@ -1,0 +1,22 @@
+<!DOCTYPE classes>
+
+<classes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamepaceSchemaLocation="src/main/resources/xml/xsd/classes.xsd">
+	<class id="1">
+		<name>classone</name>
+		<description>this is a class description</description>
+		<level>3</level>
+		<departmentId>1</departmentId>
+	</class>
+	<class id="2">
+		<name>classtwo</name>
+		<description>this is a class description 2</description>
+		<level>4</level>
+		<departmentId>2</departmentId>
+	</class>
+	<class id="3">
+		<name>classthree</name>
+		<description>this is a class description 3</description>
+		<level>3</level>
+		<departmentId>1</departmentId>
+	</class>
+</classes>

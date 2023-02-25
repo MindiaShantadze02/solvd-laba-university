@@ -1,0 +1,16 @@
+<!DOCTYPE events>
+
+<events xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamepaceSchemaLocation="src/main/resources/xml/xsd/events.xsd">
+	<event id="1">
+		<name>Eventone</name>
+		<description>Some random description</description>
+		<organiserId>11110033555</organiserId>
+		<date>2023-03-01</date>
+	</event>
+	<event id="2">
+		<name>Eventtwo</name>
+		<description>Some random description two</description>
+		<organiserId>11110031111</organiserId>
+		<date>2023-03-01</date>
+	</event>
+</events>

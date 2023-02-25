@@ -1,0 +1,16 @@
+[
+	{
+		"id": "3",
+		"name": "Eventone",
+		"description": "Some random description",
+		"organiserId": "11110033555",
+		"date": "2023-02-02"
+	},
+	{
+		"id": "2",
+		"name": "Eventtwo",
+		"description": "Some random description two",
+		"organiserId": "22220033111",
+		"date": "2023-11-11"
+	}
+]
