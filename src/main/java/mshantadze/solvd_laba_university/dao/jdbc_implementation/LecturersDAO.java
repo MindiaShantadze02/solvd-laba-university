@@ -6,42 +6,49 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import mshantadze.solvd_laba_university.Gender;
 import mshantadze.solvd_laba_university.dao.connectionpool.ConnectionPool;
 import mshantadze.solvd_laba_university.dao.interfaces.ILecturersDAO;
 import mshantadze.solvd_laba_university.models.Lecturer;
-import mshantadze.solvd_laba_university.models.Student;
 
 public class LecturersDAO implements ILecturersDAO {
 	private static final Logger LOGGER = LogManager.getLogger(LecturersDAO.class);
 	
 	@Override
-	public void getLecturers() {
+	public List<Lecturer> getLecturers() {
+		List<Lecturer> lecturers = new ArrayList<>();
 		try {
 			Connection connection = ConnectionPool.startPool().getConnection();
 			Statement statement = connection.createStatement();
 			ResultSet result = statement.executeQuery("SELECT * FROM Lecturer");
 			
 			while (result.next()) {
-				String lecturerId = result.getString("lecturer_id");
-				String firstName = result.getString("first_name");
-				String lastName = result.getString("last_name");
-				
-				LOGGER.info(lecturerId + " " + firstName + " " + lastName);
+				Lecturer lecturer = new Lecturer();
+				lecturer.setEmployeeId(result.getString("employee_id"));
+				lecturer.setFirstName(result.getString("first_name"));
+				lecturer.setLastName(result.getString("last_name"));
+				lecturer.setGender(result.getString("gender"));
+				lecturer.setPhoneNumber(result.getString("phone_number"));
+				lecturer.setDepartmentId(result.getInt("department_id"));
+				lecturer.setClassId(result.getInt("class_id"));
+				lecturers.add(lecturer);
 			}
 			
 			ConnectionPool.releaseConnection(connection);
 		} catch(SQLException e) {
-			LOGGER.error(e.getMessage());
+			LOGGER.error(e);
 		}
+		
+		return lecturers;
 	}
 
 	@Override
-	public void getLecturer(String id) {
+	public Lecturer getLecturer(String id) {
+		Lecturer lecturer = new Lecturer();
 		try {
 			Connection connection = ConnectionPool.startPool().getConnection();
 			PreparedStatement statement = connection.prepareStatement("SELECT * FROM Lecturer WHERE lecturer_id = ?");
@@ -51,17 +58,21 @@ public class LecturersDAO implements ILecturersDAO {
 			ResultSet result = statement.executeQuery();
 			
 			while (result.next()) {
-				String lecturerId = result.getString("lecturer_id");
-				String firstName = result.getString("first_name");
-				String lastName = result.getString("last_name");
-				
-				System.out.println(lecturerId + " " + firstName + " " + lastName);
+				lecturer.setEmployeeId(result.getString("employee_id"));
+				lecturer.setFirstName(result.getString("first_name"));
+				lecturer.setLastName(result.getString("last_name"));
+				lecturer.setGender(result.getString("gender"));
+				lecturer.setPhoneNumber(result.getString("phone_number"));
+				lecturer.setDepartmentId(result.getInt("department_id"));
+				lecturer.setClassId(result.getInt("class_id"));
 			}
 			
 			ConnectionPool.releaseConnection(connection);
 		} catch(SQLException e) {
-			LOGGER.error(e.getMessage());
+			LOGGER.error(e);
 		}
+		
+		return lecturer;
 	}
 
 	@Override
@@ -77,7 +88,7 @@ public class LecturersDAO implements ILecturersDAO {
 			
 			ConnectionPool.releaseConnection(connection);
 		} catch(SQLException e) {
-			LOGGER.error(e.getMessage());
+			LOGGER.error(e);
 		}
 	}
 
@@ -93,7 +104,7 @@ public class LecturersDAO implements ILecturersDAO {
 			
 			ConnectionPool.releaseConnection(connection);
 		} catch(SQLException e) {
-			LOGGER.error(e.getMessage());
+			LOGGER.error(e);
 		}
 	}
 
@@ -108,13 +119,13 @@ public class LecturersDAO implements ILecturersDAO {
 			statement.setString(3, lecturer.getLastName());
 			statement.setString(4, lecturer.getPhoneNumber());
 			statement.setString(5, lecturer.getBirthDate());
-			statement.setString(6, Gender.genderToString(lecturer.getGender()));
+			statement.setString(6, lecturer.getGender());
 			
 			statement.executeUpdate();
 			
 			ConnectionPool.releaseConnection(connection);
 		} catch(SQLException e) {
-			LOGGER.error(e.getMessage());
+			LOGGER.error(e);
 		}
 	}
 	

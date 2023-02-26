@@ -4,6 +4,22 @@
 	<select id="getClasses" resultMap="classResultMap">
 		SELECT * FROM Classes
 	</select>
+	
+	<select id="getClass" parameterType="UniClass" resultMap="classResultMap">
+		SELECT * FROM Classes WHERE class_id = #{classId}
+	</select>
+	
+	<insert id="insertClass" parameterType="UniClass">
+		INSERT INTO Classes VALUES (#{classId}, #{name}, #{description}, #{level}, #{departmentId})
+	</insert>
+	
+	<update id="updateClass" parameterType="UniClass">
+		UPDATE Classes SET name = #{name} WHERE class_id = #{classId}
+	</update>
+	
+	<delete id="deleteClass" parameterType="UniClass">
+		DELETE FROM Classes WHERE class_id = #{classId}
+	</delete>
 
 	<resultMap type = "UniClass" id="classResultMap">
 		<id property="classId" column="class_id" />

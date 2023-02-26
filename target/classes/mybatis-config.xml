@@ -9,6 +9,7 @@
 			<typeAlias type="mshantadze.solvd_laba_university.models.Event" alias="Event" />
 			<typeAlias type="mshantadze.solvd_laba_university.models.UniClass" alias="UniClass" />
 			<typeAlias type="mshantadze.solvd_laba_university.models.Employee" alias="Employee" />
+			<typeAlias type="mshantadze.solvd_laba_university.models.Event" alias="Event" />
 		</typeAliases>
 	<environments default="development">
 		<environment id="development">
@@ -28,5 +29,6 @@
 		<mapper resource="mappers/lecturer-mapper.xml" />
 		<mapper resource="mappers/class-mapper.xml" />
 		<mapper resource="mappers/employee-mapper.xml" />
+		<mapper resource="mappers/event-mapper.xml" />
 	</mappers>
 </configuration>

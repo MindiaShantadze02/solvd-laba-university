@@ -4,6 +4,23 @@
 	<select id="getLecturers" resultMap="lecturerResultMap">
 		SELECT * FROM Lecturer
 	</select>
+	
+	<select id="getLecturer" resultMap="lecturerResultMap" parameterType="Employee">
+		SELECT * FROM Lecturer WHERE lecturer_id = #{employeeId}
+	</select>
+	
+	<insert id="insertLecturer" parameterType="Lecturer">
+		INSERT INTO Lecturer (lecturer_id, first_name, last_name, phone_number, birth_date, gender) VALUES
+							 (#{lecturerId}, #{firstName}, #{lastName}, #{phoneNumber}, #{birthDate}, #{gender})
+	</insert>
+
+	<update id="updateLecturer" parameterType="Lecturer">
+		UPDATE Lecturer SET first_name = #{firstName} WHERE lecturer_id = #{employeeId}
+	</update>
+	
+	<delete id="deleteLecturer" parameterType="Lecturer">
+		DELETE FROM Lecturer WHERE lecturer_id = #{employeeId}
+	</delete>
 
 	<resultMap type = "Lecturer" id="lecturerResultMap">
 		<id property="lecturerId" column="lecturer_id" />

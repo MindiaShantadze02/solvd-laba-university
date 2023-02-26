@@ -1,0 +1,30 @@
+<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN'
+        'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+<mapper namespace="mshantadze.solvd_laba_university.dao.interfaces.IEventsDAO">
+	<select id="getEvents" resultMap="eventResultMap">
+		SELECT * FROM Events
+	</select>
+	
+	<select id="getEvent" resultMap="eventResultMap" parameterType="Event">
+		SELECT * FROM Events WHERE employee_id = #{eventId}
+	</select>
+	
+	<insert id="create" parameterType="Event">
+		INSERT INTO Classes (event_id, name, description, organiser_id, date) VALUES (#{eventId}, #{name}, #{description}, #{organiserId}, #{date})
+	</insert>
+
+	<update id="update" parameterType="Event">
+		UPDATE Events SET name = #{name} WHERE event_id = #{eventId}
+	</update>
+	
+	<delete id="delete" parameterType="Event">
+		DELETE FROM Events WHERE event_id = #{eventId}
+	</delete>
+
+	<resultMap type = "Lecturer" id="eventResultMap">
+		<id property="eventId" column="event_id" />
+		<result property="name" column="name" />
+		<result property="description" column="description" />
+		<result property="date" column="date" />
+	</resultMap>
+</mapper>

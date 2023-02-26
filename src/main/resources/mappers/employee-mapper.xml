@@ -4,8 +4,26 @@
 	<select id="getEmployees" resultMap="employeeResultMap">
 		SELECT * FROM Administration
 	</select>
+	
+	<select id="getEmployee" resultMap="employeeResultMap" parameterType="Employee">
+		SELECT * FROM Administration WHERE employee_id = #{employeeId}
+	</select>
+	
+	<insert id="insertEmployee" parameterType="Employee">
+		INSERT INTO Administration 
+			(employee_id, first_name, last_name, role, phone_number, gender, department_id) VALUES 
+			(#{employeeId},#{firstName},#{lastName},#{role},#{phoneNumber},#{gender}, #{departmentId})
+	</insert>
 
-	<resultMap type = "Employee" id="employeeResultMap">
+	<update id="updateEmployee" parameterType="Employee">
+		UPDATE Administration SET first_name = #{firstName} WHERE employee_id = #{employeeId}
+	</update>
+	
+	<delete id="deleteEmployee" parameterType="Employee">
+		DELETE FROM Administration WHERE employee_id = #{employeeId}
+	</delete>
+
+	<resultMap type="Employee" id="employeeResultMap">
 		<id property="employeeId" column="employee_id" />
 		<result property="firstName" column="first_name" />
 		<result property="lastName" column="last_name" />

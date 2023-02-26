@@ -5,21 +5,23 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import mshantadze.solvd_laba_university.Gender;
 import mshantadze.solvd_laba_university.dao.connectionpool.ConnectionPool;
 import mshantadze.solvd_laba_university.dao.interfaces.IClassesDAO;
-import mshantadze.solvd_laba_university.models.Student;
 import mshantadze.solvd_laba_university.models.UniClass;
 
 public class ClassesDAO implements IClassesDAO {
 	private static final Logger LOGGER = LogManager.getLogger(StudentsDAO.class);
 	
 	@Override
-	public void getClasses() {
+	public List<UniClass> getClasses() {
+		UniClass uniClass = null;
+		List<UniClass> uniClasses = new ArrayList<>();
 		try {
 			Connection connection = ConnectionPool.startPool().getConnection();
 			Statement statement = connection.createStatement();
@@ -32,17 +34,21 @@ public class ClassesDAO implements IClassesDAO {
 				String level = result.getString("level");
 				int departmentId = result.getInt("department_id");
 				
-				System.out.println(classId + ", " + name + ", " + description + ", " + level + ", " + departmentId);
+				uniClass = new UniClass(classId, name, description, level, departmentId);
+				uniClasses.add(uniClass);
 			}
 			
 			ConnectionPool.releaseConnection(connection);
 		} catch(SQLException e) {
 			LOGGER.error(e.getMessage());
 		}
+		
+		return uniClasses;
 	}
 
 	@Override
-	public void getClass(int id) {
+	public UniClass getClass(int id) {
+		UniClass uniClass = null;
 		try {
 			Connection connection = ConnectionPool.startPool().getConnection();
 			PreparedStatement statement = connection.prepareStatement("SELECT * FROM Classes WHERE class_id = ?");
@@ -57,13 +63,15 @@ public class ClassesDAO implements IClassesDAO {
 				String level = result.getString("level");
 				int departmentId = result.getInt("department_id");
 				
-				System.out.println(classId + ", " + name + ", " + level + ", " + departmentId);
+				uniClass = new UniClass(classId, name, description, level, departmentId);
 			}
 			
 			ConnectionPool.releaseConnection(connection);
 		} catch(SQLException e) {
 			LOGGER.error(e.getMessage());
 		}
+		
+		return uniClass;
 	}
 
 	@Override

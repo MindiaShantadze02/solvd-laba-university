@@ -9,11 +9,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import mshantadze.solvd_laba_university.Gender;
 import mshantadze.solvd_laba_university.models.Student;
 
 public class Jackson {
@@ -41,7 +38,7 @@ public class Jackson {
 	public void write() {
 		try {
 			Student student = new Student("12345678930", "firstnamethree", "lastnamethree", "595030201", false,
-					Gender.MALE, "1", "1999-02-02");
+					"male", "1", "1999-02-02");
 			
 			om.writeValue(new File("src/main/resources/json/writing/student.json"),  student);
 		} catch (IOException e) {

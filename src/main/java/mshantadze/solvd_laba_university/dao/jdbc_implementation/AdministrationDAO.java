@@ -5,11 +5,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import mshantadze.solvd_laba_university.Gender;
 import mshantadze.solvd_laba_university.dao.connectionpool.ConnectionPool;
 import mshantadze.solvd_laba_university.dao.interfaces.IAdministrationDAO;
 import mshantadze.solvd_laba_university.models.Employee;
@@ -18,28 +19,36 @@ public class AdministrationDAO implements IAdministrationDAO {
 	private static final Logger LOGGER = LogManager.getLogger(AdministrationDAO.class);
 	
 	@Override
-	public void getEmployees() {
+	public List<Employee> getEmployees() {
+		List<Employee> employees = new ArrayList<>();
+		
 		try {
 			Connection connection = ConnectionPool.startPool().getConnection();
 			Statement statement = connection.createStatement();
 			ResultSet result = statement.executeQuery("SELECT * FROM Administration");
 			
 			while (result.next()) {
-				String employeeId = result.getString("employee_id");
-				String firstName = result.getString("first_name");
-				String lastName = result.getString("last_name");
-				
-				System.out.println(employeeId + " " + firstName + " " + lastName);
+				Employee employee = new Employee();
+				employee.setEmployeeId(result.getString("employee_id"));
+				employee.setFirstName(result.getString("first_name"));
+				employee.setLastName(result.getString("last_name"));
+				employee.setGender(result.getString("gender"));
+				employee.setPhoneNumber(result.getString("phone_number"));
+				employee.setRole(result.getString("role"));
+				employees.add(employee);
 			}
 			
 			ConnectionPool.releaseConnection(connection);
 		} catch(SQLException e) {
 			LOGGER.error(e.getMessage());
 		}
+		
+		return employees;
 	}
 
 	@Override
-	public void getEmployee(String id) {
+	public Employee getEmployee(String id) {
+		Employee employee = new Employee();
 		try {
 			Connection connection = ConnectionPool.startPool().getConnection();
 			PreparedStatement statement = connection.prepareStatement("SELECT * FROM Administration WHERE employee_id = ?");
@@ -49,11 +58,12 @@ public class AdministrationDAO implements IAdministrationDAO {
 			ResultSet result = statement.executeQuery();
 			
 			while (result.next()) {
-				String employeeId = result.getString("employee_id");
-				String firstName = result.getString("first_name");
-				String lastName = result.getString("last_name");
-				
-				System.out.println(employeeId + " " + firstName + " " + lastName);
+				employee.setEmployeeId(result.getString("employee_id"));
+				employee.setFirstName(result.getString("first_name"));
+				employee.setLastName(result.getString("last_name"));
+				employee.setGender(result.getString("gender"));
+				employee.setPhoneNumber(result.getString("phone_number"));
+				employee.setRole(result.getString("role"));
 			}
 			
 			ConnectionPool.releaseConnection(connection);
@@ -61,6 +71,7 @@ public class AdministrationDAO implements IAdministrationDAO {
 			LOGGER.error(e.getMessage());
 		}
 		
+		return employee;
 	}
 
 	@Override
@@ -107,7 +118,7 @@ public class AdministrationDAO implements IAdministrationDAO {
 			statement.setString(3, employee.getLastName());
 			statement.setString(4, employee.getRole());
 			statement.setString(5, employee.getPhoneNumber());
-			statement.setString(6, Gender.genderToString(employee.getGender()));
+			statement.setString(6, employee.getGender());
 			statement.setInt(7, employee.getDepartmentId());
 			
 			statement.executeUpdate();

@@ -1,30 +1,28 @@
 package mshantadze.solvd_laba_university.dao.mybatis.implementation;
 
-import java.io.IOException;
-import java.io.Reader;
 import java.util.List;
 
-import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import mshantadze.solvd_laba_university.dao.interfaces.ILecturersDAO;
 import mshantadze.solvd_laba_university.dao.interfaces.IStudentsDAO;
 import mshantadze.solvd_laba_university.dao.mybatis.MyBatis;
+import mshantadze.solvd_laba_university.models.Lecturer;
 import mshantadze.solvd_laba_university.models.Student;
 
-public class StudentsMyBatis extends MyBatis implements IStudentsDAO {
+public class LecturersMyBatis extends MyBatis implements ILecturersDAO {
 	private static final Logger LOGGER = LogManager.getLogger(StudentsMyBatis.class);
 
-	public List<Student> getStudents() {
+	@Override
+	public List<Lecturer> getLecturers() {
 		SqlSession session = factory.openSession();
-		List<Student> students = null;
+		List<Lecturer> lecturers = null;
 		
         try{
-        	IStudentsDAO iStudentsDAO = session.getMapper(IStudentsDAO.class);
-        	students = iStudentsDAO.getStudents();
+        	ILecturersDAO iLecturersDAO = session.getMapper(ILecturersDAO.class);
+        	lecturers = iLecturersDAO.getLecturers();
         } catch(Exception e) {
             session.rollback();
         	LOGGER.error(e);
@@ -33,17 +31,17 @@ public class StudentsMyBatis extends MyBatis implements IStudentsDAO {
             session.close();
         }
         
-        return students;
+        return lecturers;
 	}
 
 	@Override
-	public Student getStudent(String id) {
+	public Lecturer getLecturer(String id) {
 		SqlSession session = factory.openSession();
-		Student student = null;
+		Lecturer lecturer = null;
 		
-		try{
-        	IStudentsDAO iStudentsDAO = session.getMapper(IStudentsDAO.class);
-        	student = iStudentsDAO.getStudent(id);
+        try{
+        	ILecturersDAO iLecturersDAO = session.getMapper(ILecturersDAO.class);
+        	lecturer = iLecturersDAO.getLecturer(id);
         } catch(Exception e) {
             session.rollback();
         	LOGGER.error(e);
@@ -51,35 +49,17 @@ public class StudentsMyBatis extends MyBatis implements IStudentsDAO {
         finally {
             session.close();
         }
-		
-		return student;
+        
+        return lecturer;
 	}
 
 	@Override
-	public void deleteStudent(Student studentArg) {
+	public void deleteLecturer(Lecturer lecturer) {
 		SqlSession session = factory.openSession();
 		
-		try{
-        	IStudentsDAO iStudentsDAO = session.getMapper(IStudentsDAO.class);
-        	iStudentsDAO.deleteStudent(studentArg);
-        	LOGGER.info("Student deleted successfully");
-        } catch(Exception e) {
-            session.rollback();
-        	LOGGER.error(e);
-        }
-        finally {
-            session.close();
-        }
-	}
-
-	@Override
-	public void updateStudent(Student studentArg) {
-		SqlSession session = factory.openSession();
-		
-		try{
-        	IStudentsDAO iStudentsDAO = session.getMapper(IStudentsDAO.class);
-        	iStudentsDAO.updateStudent(studentArg);
-        	LOGGER.info("Student updated successfully");
+        try{
+        	ILecturersDAO iLecturersDAO = session.getMapper(ILecturersDAO.class);
+        	iLecturersDAO.deleteLecturer(lecturer);
         } catch(Exception e) {
             session.rollback();
         	LOGGER.error(e);
@@ -90,13 +70,12 @@ public class StudentsMyBatis extends MyBatis implements IStudentsDAO {
 	}
 
 	@Override
-	public void insertStudent(Student studentArg) {
+	public void updateLecturer(Lecturer lecturer) {
 		SqlSession session = factory.openSession();
 		
-		try{
-        	IStudentsDAO iStudentsDAO = session.getMapper(IStudentsDAO.class);
-        	iStudentsDAO.insertStudent(studentArg);
-        	LOGGER.info("Student inserted successfully");
+        try{
+        	ILecturersDAO iLecturersDAO = session.getMapper(ILecturersDAO.class);
+        	iLecturersDAO.updateLecturer(lecturer);
         } catch(Exception e) {
             session.rollback();
         	LOGGER.error(e);
@@ -105,4 +84,21 @@ public class StudentsMyBatis extends MyBatis implements IStudentsDAO {
             session.close();
         }
 	}
+
+	@Override
+	public void insertLecturer(Lecturer lecturer) {
+		SqlSession session = factory.openSession();
+		
+        try{
+        	ILecturersDAO iLecturersDAO = session.getMapper(ILecturersDAO.class);
+        	iLecturersDAO.insertLecturer(lecturer);
+        } catch(Exception e) {
+            session.rollback();
+        	LOGGER.error(e);
+        }
+        finally {
+            session.close();
+        }
+	}
+
 }

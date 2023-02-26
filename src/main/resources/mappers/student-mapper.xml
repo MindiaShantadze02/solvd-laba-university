@@ -5,6 +5,22 @@
 		SELECT * FROM Students
 	</select>
 
+	<select id="getStudent" resultMap="studentResultMap" parameterType="Student">
+		SELECT * FROM Students WHERE student_id = #{studentId}
+	</select>
+	
+	<insert id="insertStudent" parameterType="Student">
+		INSERT INTO Students (student_id, first_name, last_name, phone_number, active, gender, level, birth_date) VALUES (#{studentId}, #{firstName}, #{lastName}, #{phoneNumber}, #{active}, #{gender}, #{level}, #{birthDate})
+	</insert>
+	
+	<update id="updateStudent" parameterType="Student">
+		UPDATE Students SET first_name = #{firstName}, last_name = #{lastName}, gender = #{gender} WHERE student_id = #{studentId}
+	</update>
+	
+	<delete id="deleteStudent" parameterType="Student">
+		DELETE FROM Students WHERE student_id = #{studentId}
+	</delete>
+
 	<resultMap type = "Student" id="studentResultMap">
 		<id property="studentId" column="student_id" />
 		<result property="firstName" column="first_name" />

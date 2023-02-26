@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import mshantadze.solvd_laba_university.Gender;
 import mshantadze.solvd_laba_university.dao.connectionpool.ConnectionPool;
 import mshantadze.solvd_laba_university.dao.interfaces.IStudentsDAO;
 import mshantadze.solvd_laba_university.models.Student;
@@ -32,12 +31,13 @@ public class StudentsDAO implements IStudentsDAO {
 				String lastName = result.getString("last_name");
 				String phoneNumber = result.getString("phone_number");
 				boolean isActive = result.getBoolean("active");
-				Gender gender = Gender.getGender(result.getString("gender"));
+				String gender = result.getString("gender");
 				String level = result.getString("level");
 				String birthDate = result.getString("birth_date");
 				
 				Student student = new Student(studentId, firstName, lastName, phoneNumber, isActive, gender, level, birthDate);
-				LOGGER.info(studentId + " " + firstName + " " + lastName + " " + gender);
+				
+				students.add(student);
 			}
 			
 			ConnectionPool.releaseConnection(connection);
@@ -64,12 +64,11 @@ public class StudentsDAO implements IStudentsDAO {
 				String lastName = result.getString("last_name");
 				String phoneNumber = result.getString("phone_number");
 				boolean isActive = result.getBoolean("active");
-				Gender gender = Gender.getGender(result.getString("gender"));
+				String gender = result.getString("gender");
 				String level = result.getString("level");
 				String birthDate = result.getString("birth_date");
 				
 				student = new Student(studentId, firstName, lastName, phoneNumber, isActive, gender, level, birthDate);
-				System.out.println(studentId + " " + firstName + " " + lastName + " " + gender);
 			}
 			
 			ConnectionPool.releaseConnection(connection);
@@ -105,7 +104,7 @@ public class StudentsDAO implements IStudentsDAO {
 			
 			statement.setString(1, student.getFirstName());
 			statement.setString(2, student.getLastName());
-			statement.setString(3, Gender.genderToString(student.getGender()));
+			statement.setString(3, student.getGender());
 			statement.setString(4, student.getStudentId());
 			
 			statement.executeUpdate();
@@ -130,7 +129,7 @@ public class StudentsDAO implements IStudentsDAO {
 			statement.setString(3, student.getLastName());
 			statement.setString(4, student.getPhoneNumber());
 			statement.setBoolean(5, student.isActive());
-			statement.setString(6, Gender.genderToString(student.getGender()));
+			statement.setString(6, student.getGender());
 			statement.setString(7, student.getLevel());
 			statement.setString(8, student.getBirthDate());
 			

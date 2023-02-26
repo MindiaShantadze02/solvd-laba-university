@@ -8,7 +8,6 @@ import org.apache.logging.log4j.Logger;
 import org.xml.sax.Attributes;
 import org.xml.sax.helpers.DefaultHandler;
 
-import mshantadze.solvd_laba_university.Gender;
 import mshantadze.solvd_laba_university.models.Student;
 
 public class StudentsXMLHandler extends DefaultHandler {

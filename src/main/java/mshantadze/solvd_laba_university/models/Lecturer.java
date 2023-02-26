@@ -10,7 +10,6 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import mshantadze.solvd_laba_university.Gender;
 import mshantadze.solvd_laba_university.parsers.xml.jaxb.utils.DateAdapter;
 
 
@@ -40,7 +39,7 @@ public class Lecturer {
 	
 	@XmlElement
 	@JsonProperty("gender")
-	private Gender gender;
+	private String gender;
 	
 	private String photo;
 	
@@ -57,8 +56,12 @@ public class Lecturer {
 	@JsonProperty("birthDate")
 	private String birthDate;
 
+	public Lecturer() {
+		super();
+	}
+
 	public Lecturer(String employeeId, String firstName, String lastName, String phoneNumber, boolean active,
-			Gender gender, String photo, int departmentId, int classId, String birthDate) {
+			String gender, String photo, int departmentId, int classId, String birthDate) {
 		super();
 		this.employeeId = employeeId;
 		this.firstName = firstName;
@@ -112,11 +115,11 @@ public class Lecturer {
 		this.active = active;
 	}
 
-	public Gender getGender() {
+	public String getGender() {
 		return gender;
 	}
 
-	public void setGender(Gender gender) {
+	public void setGender(String gender) {
 		this.gender = gender;
 	}
 

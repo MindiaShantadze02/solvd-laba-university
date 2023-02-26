@@ -7,8 +7,6 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-import mshantadze.solvd_laba_university.Gender;
-
 @XmlType
 @XmlRootElement(name="employee")
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -24,14 +22,14 @@ public class Employee {
 	@XmlElement
 	private String phoneNumber;
 	@XmlElement
-	private Gender gender;
+	private String gender;
 	@XmlElement
 	private String photo;
 	@XmlElement
 	private int departmentId;
 	
 	public Employee(String employeeId, String firstName, String lastName, String role, String phoneNumber,
-			Gender gender, String photo, int departmentId) {
+			String gender, String photo, int departmentId) {
 		super();
 		this.employeeId = employeeId;
 		this.firstName = firstName;
@@ -42,6 +40,15 @@ public class Employee {
 		this.photo = photo;
 		this.departmentId = departmentId;
 	}
+	
+
+		
+	public Employee() {
+		super();
+	}
+
+
+
 	public String getEmployeeId() {
 		return employeeId;
 	}
@@ -72,10 +79,10 @@ public class Employee {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-	public Gender getGender() {
+	public String getGender() {
 		return gender;
 	}
-	public void setGender(Gender gender) {
+	public void setGender(String gender) {
 		this.gender = gender;
 	}
 	public String getPhoto() {

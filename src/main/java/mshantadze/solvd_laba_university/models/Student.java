@@ -11,7 +11,6 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import mshantadze.solvd_laba_university.Gender;
 import mshantadze.solvd_laba_university.parsers.xml.jaxb.utils.DateAdapter;
 
 @XmlType
@@ -21,35 +20,41 @@ public class Student {
 	@XmlAttribute(name="id", required = true)
 	@JsonProperty("id")
 	private String studentId;
+	
 	@JsonProperty("firstName")
 	@XmlElement
 	private String firstName;
+	
 	@JsonProperty("lastName")
 	@XmlElement
 	private String lastName;
+	
 	@JsonProperty("phoneNumber")
 	@XmlElement
 	private String phoneNumber;
+	
 	@JsonProperty("active")
 	@XmlElement
 	private boolean active;
+	
 	@JsonProperty("gender")
 	@XmlElement
-	private Gender gender;
+	private String gender;
+	
 	@JsonProperty("level")
 	@XmlElement
 	private String level;
+	
 	@JsonProperty("birthDate")
 	@XmlJavaTypeAdapter(DateAdapter.class)
 	private String birthDate;
 	
 	public Student() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Student(String studentId, String firstName, String lastName, String phoneNumber, boolean active,
-		Gender gender, String level, String birthDate) {
+		String gender, String level, String birthDate) {
 		this.studentId = studentId;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -110,13 +115,13 @@ public class Student {
 	}
 
 
-	public Gender getGender() {
+	public String getGender() {
 		return gender;
 	}
 
 
 	public void setGender(String gender) {
-		this.gender = Gender.getGender(gender);
+		this.gender = gender;
 	}
 
 

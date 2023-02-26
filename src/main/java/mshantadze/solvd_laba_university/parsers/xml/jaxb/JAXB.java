@@ -3,7 +3,6 @@ package mshantadze.solvd_laba_university.parsers.xml.jaxb;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.util.List;
 
 import javax.xml.bind.Unmarshaller;
 
@@ -14,7 +13,6 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 
-import mshantadze.solvd_laba_university.Gender;
 import mshantadze.solvd_laba_university.models.Student;
 import mshantadze.solvd_laba_university.models.Students;
 
@@ -47,7 +45,7 @@ public class JAXB {
 			marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 			
 			Student student = new Student("12345678930", "firstnamethree", "lastnamethree", "595030201", false,
-					Gender.MALE, "1", "1999-02-02");
+					"male", "1", "1999-02-02");
 			
 			marshaller.marshal(student, new File("src/main/resources/student.xml"));
 		} catch (FileNotFoundException e) {

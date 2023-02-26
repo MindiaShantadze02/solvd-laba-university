@@ -18,7 +18,6 @@ import javax.xml.stream.events.XMLEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import mshantadze.solvd_laba_university.Gender;
 import mshantadze.solvd_laba_university.models.Student;
 
 public class StudentsStaXParser {
