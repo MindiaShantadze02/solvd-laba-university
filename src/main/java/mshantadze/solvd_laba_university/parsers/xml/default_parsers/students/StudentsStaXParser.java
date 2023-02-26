@@ -85,7 +85,6 @@ public class StudentsStaXParser {
 				}
 			}
 		} catch (FileNotFoundException | XMLStreamException e) {
-			// TODO Auto-generated catch block
 			LOGGER.error(e);
 		}
 		

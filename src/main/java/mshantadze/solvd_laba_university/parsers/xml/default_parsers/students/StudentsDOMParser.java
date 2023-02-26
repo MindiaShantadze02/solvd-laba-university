@@ -39,13 +39,10 @@ public class StudentsDOMParser {
 				LOGGER.info("-----------------------------");
 			}
 		} catch (ParserConfigurationException e) {
-			// TODO Auto-generated catch block
 			LOGGER.error(e);
 		} catch (SAXException e) {
-			// TODO Auto-generated catch block
 			LOGGER.error(e);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			LOGGER.error(e);
 		}
 		return null;

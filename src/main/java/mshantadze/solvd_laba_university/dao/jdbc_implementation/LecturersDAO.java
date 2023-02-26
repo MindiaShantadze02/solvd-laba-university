@@ -84,7 +84,7 @@ public class LecturersDAO implements ILecturersDAO {
 			
 			statement.executeUpdate();
 			
-			System.out.println("Lecturer deleted");
+			LOGGER.info("Lecturer deleted");
 			
 			ConnectionPool.releaseConnection(connection);
 		} catch(SQLException e) {

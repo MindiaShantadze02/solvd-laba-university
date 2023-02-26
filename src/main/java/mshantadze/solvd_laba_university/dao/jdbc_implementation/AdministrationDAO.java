@@ -83,7 +83,7 @@ public class AdministrationDAO implements IAdministrationDAO {
 			
 			statement.executeUpdate();
 			
-			System.out.println("Employee deleted");
+			LOGGER.info("Employee deleted");
 			
 			ConnectionPool.releaseConnection(connection);
 		} catch(SQLException e) {

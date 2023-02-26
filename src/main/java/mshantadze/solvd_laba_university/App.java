@@ -16,7 +16,7 @@ public class App
     	List<Employee> employees = new AdministrationMyBatis().getEmployees();
     	
     	for (Employee employee : employees) {
-    		System.out.println(employee.getFirstName());
+    		LOGGER.info(employee.getFirstName());
     	}
     }
 }

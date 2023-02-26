@@ -83,7 +83,7 @@ public class ClassesDAO implements IClassesDAO {
 			
 			statement.executeUpdate();
 			
-			System.out.println("Class deleted");
+			LOGGER.info("Class deleted");
 			
 			ConnectionPool.releaseConnection(connection);
 		} catch(SQLException e) {
@@ -102,7 +102,7 @@ public class ClassesDAO implements IClassesDAO {
 			
 			statement.executeUpdate();
 			
-			System.out.println("Inserted new class into the database");
+			LOGGER.info("Inserted new class into the database");
 			
 			ConnectionPool.releaseConnection(connection);
 		} catch(SQLException e) {
@@ -123,7 +123,7 @@ public class ClassesDAO implements IClassesDAO {
 			
 			statement.executeUpdate();
 			
-			System.out.println("Inserted new class into the database");
+			LOGGER.info("Inserted new class into the database");
 			
 			ConnectionPool.releaseConnection(connection);
 		} catch(SQLException e) {
